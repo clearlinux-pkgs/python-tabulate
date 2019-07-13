@@ -4,7 +4,7 @@
 #
 Name     : python-tabulate
 Version  : 0.8.1
-Release  : 4
+Release  : 5
 URL      : https://bitbucket.org/astanin/python-tabulate/get/v0.8.1.tar.gz
 Source0  : https://bitbucket.org/astanin/python-tabulate/get/v0.8.1.tar.gz
 Summary  : No detailed summary available
@@ -15,6 +15,7 @@ Requires: python-tabulate-license = %{version}-%{release}
 Requires: python-tabulate-python = %{version}-%{release}
 Requires: python-tabulate-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
+BuildRequires : nose
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
@@ -70,8 +71,17 @@ python3 components for the python-tabulate package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1539723492
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562978545
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
 %check
@@ -80,6 +90,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/python-tabulate
 cp LICENSE %{buildroot}/usr/share/package-licenses/python-tabulate/LICENSE
