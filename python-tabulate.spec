@@ -4,7 +4,7 @@
 #
 Name     : python-tabulate
 Version  : 0.8.1
-Release  : 5
+Release  : 6
 URL      : https://bitbucket.org/astanin/python-tabulate/get/v0.8.1.tar.gz
 Source0  : https://bitbucket.org/astanin/python-tabulate/get/v0.8.1.tar.gz
 Summary  : No detailed summary available
