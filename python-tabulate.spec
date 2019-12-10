@@ -4,7 +4,7 @@
 #
 Name     : python-tabulate
 Version  : 0.8.1
-Release  : 8
+Release  : 9
 URL      : https://bitbucket.org/astanin/python-tabulate/get/v0.8.1.tar.gz
 Source0  : https://bitbucket.org/astanin/python-tabulate/get/v0.8.1.tar.gz
 Summary  : No detailed summary available
@@ -66,13 +66,14 @@ python3 components for the python-tabulate package.
 
 %prep
 %setup -q -n astanin-python-tabulate-421379831ae0
+cd %{_builddir}/astanin-python-tabulate-421379831ae0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562978545
+export SOURCE_DATE_EPOCH=1576014638
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -88,12 +89,12 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/python-tabulate
-cp LICENSE %{buildroot}/usr/share/package-licenses/python-tabulate/LICENSE
+cp %{_builddir}/astanin-python-tabulate-421379831ae0/LICENSE %{buildroot}/usr/share/package-licenses/python-tabulate/b4814e0ecc6647f06dcfe3074287f31cb2bce643
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -108,7 +109,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/python-tabulate/LICENSE
+/usr/share/package-licenses/python-tabulate/b4814e0ecc6647f06dcfe3074287f31cb2bce643
 
 %files python
 %defattr(-,root,root,-)
