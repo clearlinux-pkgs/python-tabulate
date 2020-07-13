@@ -4,7 +4,7 @@
 #
 Name     : python-tabulate
 Version  : 0.8.7
-Release  : 12
+Release  : 13
 URL      : https://files.pythonhosted.org/packages/57/6f/213d075ad03c84991d44e63b6516dd7d185091df5e1d02a660874f8f7e1e/tabulate-0.8.7.tar.gz
 Source0  : https://files.pythonhosted.org/packages/57/6f/213d075ad03c84991d44e63b6516dd7d185091df5e1d02a660874f8f7e1e/tabulate-0.8.7.tar.gz
 Summary  : Pretty-print tabular data
